@@ -18,19 +18,10 @@ header{
         padding:0px;
         line-height:100px;
         display:inline;
-        
     }
 
-    form{
-        position:absolute;
-        right:10px;
-        bottom:10px;
-    }
-
-    p{
-        position:absolute;
-        right:10px;
-        bottom:30px;
+    #headerRight{
+        float:right;
     }
 }
 
@@ -42,6 +33,12 @@ main{
     margin:auto;
     margin-top:115px;
     height:1200px;
+    padding:10px;
+
+    p{
+        
+        text-align:center;
+    }
 }
 
 footer{

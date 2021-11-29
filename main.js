@@ -11,30 +11,46 @@ let loggedIn = JSON.parse(localStorage.getItem('loggedIn'));
 
 
 if(loggedIn.loggedIn == 'true'){
+    renderLoggedIn();
+}
 
-    document.getElementById('header').innerHTML +=
-    `
-        <p>Välkommen `+loggedIn.username+`!</p>
+else{
+    renderLoggedOut();
+}
+
+
+
+function renderLoggedIn(){
+    document.getElementById('headerRight').innerHTML =
+    `<div id="headerRight">
+        <p>Welcome `+loggedIn.username+`!</p>
         <form>
-            <input type="submit" value="Logout" id="logoutButton"></input>
+            <input type="button" value="Logout" id="logoutButton"></input>
         </form>
-    `
+    </div>`;
+
+    document.getElementById('main').innerHTML = '<p>Welcome back ' + loggedIn.username + '!</p>';
 
     document.getElementById('logoutButton').addEventListener('click', function(){
         loggedIn = {'loggedIn':'false', 'username':'', 'password':''};
         localStorage.setItem( 'loggedIn', JSON.stringify(loggedIn) );
+        renderLoggedOut();
     });
 }
 
-else{
-    document.getElementById('header').innerHTML +=
-    `
-    <form>
-        <input type="text" placeholder="Username" id="loginUsername"></input>
-        <input type="password" placeholder="Password" id="loginPassword"></input>
-        <input type="submit" value="Login" id="loginButton"></input>
-    </form>
-    `;
+
+
+function renderLoggedOut(){
+    document.getElementById('headerRight').innerHTML =
+    `<div id="headerRight">
+        <form>
+            <input type="text" placeholder="Username" id="loginUsername"></input>
+            <input type="password" placeholder="Password" id="loginPassword"></input>
+            <input type="button" value="Login" id="loginButton"></input>
+        </form>
+    </div>`;
+
+    document.getElementById('main').innerHTML = '<p>Welcome! You can log in in the upper right corner, there you can also create a new account.</p>';
 
     document.getElementById('loginButton').addEventListener('click', function(){
         let username = document.getElementById('loginUsername').value;
@@ -45,6 +61,7 @@ else{
                 if(password == storageUsers[i].password){
                     loggedIn = {'loggedIn':'true', 'username':username, 'password':password};
                     localStorage.setItem( 'loggedIn', JSON.stringify(loggedIn) );
+                    renderLoggedIn();
                 }
             }
         }
@@ -54,6 +71,3 @@ else{
         }
     });
 }
-
-
-
