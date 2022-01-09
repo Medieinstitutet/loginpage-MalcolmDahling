@@ -2,7 +2,7 @@
 loginpage-MalcolmDahling created by GitHub Classroom
 
 
-Github pages: https://medieinstitutet.github.io/malcolmdahling.github.io/
+Github pages: https://medieinstitutet.github.io/loginpage-MalcolmDahling/
 
 
 Users:
